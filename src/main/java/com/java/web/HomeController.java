@@ -1,27 +1,38 @@
 package com.java.web;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
+import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+//import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+
+
 
 
 @Controller
 public class HomeController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
+	@Autowired
+	dao d;
 	
+	ListBean[] list = new ListBean[8];
+	
+	public HomeController() {
+		list[0] = new ListBean(1, "어렵 :)" , "이남규");
+		list[1] = new ListBean(2, "후 :)", "히");
+		
+	}
+	
+	public void listBean() {
+		
+	}
 	
 	@RequestMapping("/")
-	public String notice() {
-		
+	public String notice(HttpServletRequest req) {
+		req.setAttribute("list", list);
+		d.select();
 		return "main";
 	}
 	
@@ -30,6 +41,13 @@ public class HomeController {
 		
 		return "create";
 	}
+	
+	@RequestMapping("/home2")
+	public String notice2() {
+		
+		return "home2";
+	}
+	
 	
 	
 	

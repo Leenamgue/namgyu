@@ -1,3 +1,4 @@
+<%@page import="com.java.web.ListBean"%>
 <%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -67,18 +68,27 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td><input type="checkbox"></td>
-					<td>1</td>
-					<td>이거 어렵다</td>
-					<td>누구게</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox"></td>
-					<td>2</td>
-					<td>그치</td>
-					<td>몰라</td>
-				</tr>
+<%
+ListBean[] list = (ListBean[]) request.getAttribute("list");
+	if(list == null){
+		System.out.println("없다");
+	} else {
+		System.out.println(list.length);
+		for(int i = 0; i < list.length; i++){ 
+			System.out.println(list[i]);
+			if(list[i] != null){
+%>
+	 			<tr>
+			      <td><input type="checkbox" onclick="checkEvent(<%=i %>)" name="checkbox"> </td>
+			      <td><%=list[i].getN_no() %></td>
+			      <td><%=list[i].getTitle() %></td>
+			      <td><%=list[i].getName() %></td>
+			    </tr> 
+<%
+			}
+ 		}
+	}
+%>
 			</tbody>
 		</table>
 	</section>

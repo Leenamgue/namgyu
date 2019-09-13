@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="com.java.web.ListBean"%>
 <%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -68,26 +69,43 @@
 				</tr>
 			</thead>
 			<tbody>
+<%--
+	ListBean[] list = (ListBean[]) request.getAttribute("list");
+			if(list == null){
+			System.out.println("없다");
+		} else {
+			System.out.println(list.length);
+			for(int i = 0; i < list.length; i++){ 
+				System.out.println(list[i]);
+				if(list[i] != null){
+--%>
+
 <%
-ListBean[] list = (ListBean[]) request.getAttribute("list");
-	if(list == null){
-		System.out.println("없다");
-	} else {
-		System.out.println(list.length);
-		for(int i = 0; i < list.length; i++){ 
-			System.out.println(list[i]);
-			if(list[i] != null){
+	List<ListBean> list = (List<ListBean>) request.getAttribute("list");
+		if(list == null || list.size() == 0) {
+			System.out.println("리스트에 내용이 없습니다");
+		}else{
+			for(int i = 0; i < list.size(); i++){
+
 %>
 	 			<tr>
-			      <td><input type="checkbox" onclick="checkEvent(<%=i %>)" name="checkbox"> </td>
-			      <td><%=list[i].getN_no() %></td>
-			      <td><%=list[i].getTitle() %></td>
-			      <td><%=list[i].getName() %></td>
+	 			  <td><input type="checkbox" onclick="checkEvent(<%=i %>)" name="checkbox"></td>				      
+			      <td><%=list.get(i).getN_no() %></td>
+			      <td><%=list.get(i).getTitle() %></td>
+			      <td><%=list.get(i).getName() %></td>
 			    </tr> 
-<%
+<%--
 			}
  		}
 	}
+--%>
+<% 
+		}
+	}
+		
+			
+
+
 %>
 			</tbody>
 		</table>

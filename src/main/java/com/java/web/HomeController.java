@@ -1,9 +1,13 @@
 package com.java.web;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 //import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -15,7 +19,7 @@ public class HomeController {
 	
 	
 	@Autowired
-	dao d;
+	SqlSession sql;
 	
 	ListBean[] list = new ListBean[8];
 	
@@ -30,9 +34,9 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/")
-	public String notice(HttpServletRequest req) {
-		req.setAttribute("list", list);
-		d.select();
+	public String notice(Model m) {
+		List<ListBean> list = sql.selectList("test.select");
+		m.addAttribute("list", list);
 		return "main";
 	}
 	

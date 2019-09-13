@@ -43,4 +43,9 @@ public class ListBean {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	@Override
+	public String toString() {
+		return "ListBean [n_no=" + n_no + ", title=" + title + ", name=" + name + "]";
+	}
  }

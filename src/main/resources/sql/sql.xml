@@ -6,5 +6,19 @@
   	<select id="select" resultType="com.java.web.ListBean">
   		SELECT n_no, title, name FROM notice WHERE deYln= 'N'
   	</select>
+  	
+  	<insert id="insert" parameterType="com.java.web.ListBean">
+  		insert into notice (`title`, `name`) values (#{title}, #{name})
+  	</insert>
+  	
+  	<update id="update" parameterType="com.java.web.ListBean">
+  	UPDATE `notice` SET `title` = #{title}, `name` = #{name} WHERE `n_no` = ${n_no}
+  </update>
+  
+  	<update id="delete" parameterType="com.java.web.ListBean">
+  		UPDATE notice SET `deYln` = 'Y' where `NO` = ${no}
+  	</update>
+  
+  
   
   </mapper>

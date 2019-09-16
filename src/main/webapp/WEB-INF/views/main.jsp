@@ -45,6 +45,21 @@
 	
 	}
 </style>
+<script type="">
+	$(document).ready(function(){
+		$("#checkbox").on("click",function(e){
+			e.
+		
+	})
+
+
+});
+
+	$("#checkbox").click(function(){
+		alert("hello");
+});
+
+</script>
 <body>
 
 
@@ -54,8 +69,8 @@
 		
 	</header>
 	<section>
-		<form id="edit" action="/create">
-			<button type="submit">글작성</button>
+		<form id="edit" action="" >
+			<a href="tr">등록</a>
 			<button type="submit">삭제</button>
 			<button type="submit">수정</button>
 		</form>

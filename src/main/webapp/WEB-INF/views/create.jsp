@@ -69,6 +69,15 @@
 			location.href="/";
 		});
 	})
+	function goPage(title, name = 0) {
+		var f = document.paging;
+		f.title.value = title;
+		f.name.value = name;
+		f.action = "/main"
+		f.method = "post"
+		f.submit();
+	};
+	
 </script>
 </head>
 <body>
@@ -76,18 +85,19 @@
 		<h2>작성</h2>
 	</header>
 	<section>
-		<form id="" action="/home">
+		<form id="" action="/create">
 			<p>
 			<label>제목</label>
-			<input type="text" placeholder="제목을 입력하세요" class="tb"></p>
+			<input type="text" placeholder="제목을 입력하세요" name="title" id="title" class="tb" required="required"></p>
 			<p>
 			<label>내용</label>
-			<input name="text" class="textbox">
+			<input type="text" name="name" id="name" class="textbox">
 			
 			</p>
 			<div class="buttonC">
-				<button type="button" id="list">목록</button>
-				<button type="submit">등록</button>
+				<button type="submlt">등록</button>
+				
+				<a href="">뒤로</a>
 			</div>
 		</form>
 	</section>
